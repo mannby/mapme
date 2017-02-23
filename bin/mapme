@@ -27,6 +27,8 @@ else {
   var resolvedFileName = path.resolve(process.cwd(), fileName);
 
   var rootNode = new TreeNode(resolvedFileName);
+  rootNode.path = path.dirname(path.resolve(process.cwd(), fileName));
+  rootNode.done = new Set();
   var fp = new fileParser(fileName,rootNode,rootNode, process.cwd());
   fp.parse(function(err,data){
     var page = new pageCreator(data,endFile);
