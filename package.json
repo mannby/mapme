@@ -1,6 +1,6 @@
 {
   "name": "reqtree",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Visualize a node project's dependency tree",
   "main": "bin/reqtree",
   "scripts": {
