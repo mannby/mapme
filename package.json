@@ -1,28 +1,27 @@
 {
-  "name": "mapme",
+  "name": "reqtree",
   "version": "0.1.0",
   "description": "Visualize a node project's dependency tree",
-  "main": "bin/mapme",
+  "main": "bin/reqtree",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "mapme": "bin/mapme"
+    "reqtree": "bin/reqtree"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/dmanjunath/mapme.git"
+    "url": "git://github.com/mannby/reqtree.git"
   },
-  "author": "",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/dmanjunath/mapme/issues"
+    "url": "https://github.com/mannby/reqtree/issues"
   },
-  "homepage": "https://github.com/dmanjunath/mapme",
+  "homepage": "https://github.com/mannby/reqtree",
   "author": {
-    "name": "Dheeraj Manjunath",
-    "email": "dheerajmanju1@gmail.com",
-    "url": "https://github.com/dmanjunath"
+    "name": "Claes-Fredrik mannby",
+    "email": "cf@mannby.com",
+    "url": "https://github.com/mannby"
   },
   "dependencies": {
     "open": "0.0.5",
