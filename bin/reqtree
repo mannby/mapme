@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
-var parseArgs = require('minimist');              //Using the minimist node package 
-var fileParser = require('../lib/file_parser.js')
-var pageCreator = require('../lib/page_creator.js');  //Creating the page
-var TreeNode = require("tree-node")
+const parseArgs = require('minimist')
+const FileParser = require('../lib/file_parser.js')
+const PageCreator = require('../lib/page_creator.js')
 
-var argArray = parseArgs(process.argv.slice(2));  //Grabbing the command line arguments
+var argArray = parseArgs(process.argv.slice(2))
 var argv = argArray._
-var writeFile = 'dependencies.html';              //the default file being written to
+var writeFile = 'dependencies.html'
 var dataObj = {}
 var openFile = require('open')
 var path = require('path')
@@ -26,13 +25,17 @@ else {
   var endFile = path.dirname(path.resolve(process.cwd(), fileName)) + '/' + writeFile
   var resolvedFileName = path.resolve(process.cwd(), fileName)
 
-  var rootNode = new TreeNode(resolvedFileName)
+  var rootNode = {}
   rootNode.dir = path.dirname(path.resolve(process.cwd(), fileName))
-  rootNode.path = resolvedFileName
-  var fp = new fileParser(fileName, rootNode, rootNode, rootNode.dir)
-  fp.parse(function(err,data) {
-    var page = new pageCreator(data, endFile)
-    page.create()
+  rootNode.key = resolvedFileName.replace(rootNode.dir, '')
+  var fp = new FileParser(fileName, rootNode, rootNode, rootNode.dir)
+  fp.parse().then(_ => {
+    var page = new PageCreator(rootNode, endFile)
+    return page.create()
+  }).then(_ => {
+    console.log('Done')
+  }).catch(function(e) {
+    console.log('ERROR: ' + e)
   })
 }
 
